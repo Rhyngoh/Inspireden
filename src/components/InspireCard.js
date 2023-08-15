@@ -20,7 +20,6 @@ export default function InspireCard(props) {
 
     // fetch data from server
     setLoading(true);
-    console.log(inputValue, JSON.stringify({ inputValue }));
     let response = await fetch("/api/inspire", {
       method: "POST",
       headers: {
@@ -28,7 +27,6 @@ export default function InspireCard(props) {
       },
       body: JSON.stringify({ prompt: inputValue }),
     });
-    console.log("response", response);
     let data = await response.json();
     console.log("data", data);
     if (data?.openai?.items[0]) {
