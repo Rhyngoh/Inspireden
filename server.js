@@ -27,7 +27,7 @@ app.post("/api/inspire", async (req, res) => {
       }),
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.EDENAI_API_KEY}`,
+        Authorization: `Bearer ${req.body.apiKey || process.env.EDENAI_API_KEY}`,
       },
     });
     let data = await response.json();
