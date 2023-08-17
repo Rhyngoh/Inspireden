@@ -5,6 +5,7 @@ import InspireInput from "./InspireInput";
 import InspireImage from "./InspireImage";
 import { GridLoader } from "react-spinners";
 import { useEdenAIContext } from "@/context/EdenAIContext";
+import { toast } from "react-toastify";
 
 export default function InspireCard(props) {
   const [inputValue, setInputValue] = useState("");
@@ -21,16 +22,25 @@ export default function InspireCard(props) {
 
     // fetch data from server
     setLoading(true);
-    let response = await fetch("/api/inspire", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ prompt: inputValue, apiKey: edenApiKey }),
-    });
-    let data = await response.json();
-    if (data?.openai?.items[0]) {
-      setImage(data.openai.items[0]);
+    try {
+      let response = await fetch("/api/inspire", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ prompt: inputValue, apiKey: edenApiKey }),
+      });
+      let data = await response.json();
+      if (data?.error) {
+        toast.error(data.error);
+      }
+      if (data?.openai?.items[0]) {
+        setImage(data.openai.items[0]);
+        toast.success("Inspiration generated!");
+      }
+    } catch (err) {
+      console.error("Error generating inspiration: ", err);
+      toast.error("Error generating inspiration");
     }
 
     setLoading(false);

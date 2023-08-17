@@ -7,6 +7,5 @@ export const getRandomPrompt = () => {
   firstVerb[Math.floor(Math.random() * firstVerb.length)] +
   secondNoun[Math.floor(Math.random() * secondNoun.length)] + 
   descriptive[Math.floor(Math.random() * descriptive.length)] + '"';
-  console.log('Random Prompt', randomPrompt);
   return randomPrompt;
 }

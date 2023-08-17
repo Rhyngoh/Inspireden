@@ -1,5 +1,7 @@
 import "./globals.css";
 import { Montserrat } from "next/font/google";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { EdenAIContextProvider } from "@/context/EdenAIContext";
 const montserrat = Montserrat({ subsets: ["latin"] });
@@ -14,6 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={montserrat.className}>
         <EdenAIContextProvider>{children}</EdenAIContextProvider>
+        <ToastContainer />
       </body>
     </html>
   );

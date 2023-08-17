@@ -1,11 +1,17 @@
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
-  console.log('POST inspire api', req);
   const data = await req.json();
-  console.log('data', data);
-  if (!data) return NextResponse.json({ error: 'Missing request body' }, { status: 400 });
-  if (!data.prompt) return NextResponse.json({ error: 'Missing request body' }, { status: 400 });
+  if (!data)
+    return NextResponse.json(
+      { error: "Missing request body" },
+      { status: 400 }
+    );
+  if (!data.prompt)
+    return NextResponse.json(
+      { error: "Missing request body" },
+      { status: 400 }
+    );
   try {
     let response = await fetch("https://api.edenai.run/v2/image/generation", {
       method: "POST",
@@ -20,9 +26,15 @@ export async function POST(req) {
       },
     });
     let fetchData = await response.json();
-    return NextResponse.json(fetchData)
+    if (fetchData?.detail === "Invalid Api Key")
+      return NextResponse.json({ error: "Invalid Api Key" }, { status: 401 });
+
+    return NextResponse.json(fetchData);
   } catch (err) {
-    console.log("Error in the inspiration step", err);
-    return NextResponse.json({ error: 'Error in the inspiration step' }, { status: 500 });
+    console.error("Error in the inspiration step", err);
+    return NextResponse.json(
+      { error: "Error in the inspiration step" },
+      { status: 500 }
+    );
   }
 }
