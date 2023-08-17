@@ -12,7 +12,7 @@ export default function InspireInput(props) {
     setRandomPrompt(randomPrompt);
   }, []);
   return (
-    <form onSubmit={handleSubmit} className="h-4/6 px-5 w-full">
+    <form onSubmit={handleSubmit} className="h-4/6 w-full">
       <div className="flex flex-col items-center">
         <div className="w-full max-w-[80vw] flex flex-row-reverse items-center justify-between">
           <BsFillArrowRightCircleFill

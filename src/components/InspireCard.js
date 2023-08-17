@@ -41,7 +41,7 @@ export default function InspireCard(props) {
   };
   return (
     <>
-      <section className="flex flex-col justify-center items-center relative h-full mt-5 p-4 gap-4 max-w-full">
+      <section className="flex flex-col justify-center items-center relative h-full gap-4 max-w-full">
         {loading && (
           <div className="w-full h-full z-2 flex justify-center items-center absolute top-0 left-0">
             <div className="h-full w-full bg-white bg-opacity-50 blur-md absolute"></div>

@@ -20,7 +20,7 @@ export default function APIInput(props) {
           id="message-input"
           onChange={handleInputChange}
           value={inputValue}
-          className={`w-full p-3 me-3 rounded-xl outline-none border-2 border-sky-200 focus:border-sky-400`}
+          className={`w-full p-3 rounded-xl outline-none border-2 border-sky-200 focus:border-sky-400`}
           type="text"
           placeholder={`Enter EdenAI API Key`}
         />
