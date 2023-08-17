@@ -26,7 +26,7 @@ export default function InspireInput(props) {
             value={inputValue}
             className="w-full p-3 me-3 rounded-xl outline-none border-2 border-sky-200 focus:border-sky-400 min-w-[80%] md:min-w-[400px]"
             type="text"
-            placeholder={`Get Inspired! Try ${randomPrompt}`}
+            placeholder={randomPrompt && `Get Inspired! Try ${randomPrompt}`}
             disabled={loading}
           />
         </div>

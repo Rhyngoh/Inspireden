@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import InspireInput from "./InspireInput";
 import InspireImage from "./InspireImage";
 import { GridLoader } from "react-spinners";
@@ -30,12 +29,9 @@ export default function InspireCard(props) {
       body: JSON.stringify({ prompt: inputValue, apiKey: edenApiKey }),
     });
     let data = await response.json();
-    console.log("data", data);
     if (data?.openai?.items[0]) {
       setImage(data.openai.items[0]);
     }
-
-    // setInputValue('');
 
     setLoading(false);
   };
